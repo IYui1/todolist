@@ -1,0 +1,48 @@
+{% include "header.html" %}
+
+    <div class="container-2">
+        <h1 style="font-size: 3rem;">Good Morning {{ user.name }}</h1>
+        <h3>What do you plan today?</h3>
+    </div>
+    <div id="card">
+        <div class="card" onclick="window.location.href='{{ url_for('todolist') }}';">
+            <div class="container-3">
+                <p class="button"><img src="static/list.svg" alt=""></p>
+                <h2>To Do List</h2>
+                <p>Your Plan</p>
+                <hr>
+                <p>calender</p>
+            </div>
+        </div>
+        <div class="card" onclick="window.location.href='{{ url_for('schedule') }}';">
+            <div class="container-3">
+                <p class="button"><img src="static/schedule.svg" alt=""></p>
+                <h2>Schedule</h2>
+                <p>Your routine</p>
+                <hr>
+                <p>{calender}</p>
+            </div>
+        </div>
+        <div class="card" onclick="window.location.href='{{ url_for('task') }}';">
+            <div class="container-3">
+                <p class="button"><img src="static/align-center.svg" alt=""></p>
+                <h2>Task</h2>
+                <p>Done The Task</p>
+                <hr>
+                <p>{calender}</p>
+            </div>
+        </div>
+        <div class="card" onclick="window.location.href='{{ url_for('analytics') }}';">
+            <div class="container-3">
+                <p class="button"><img src="static/analytics.svg" alt=""></p>
+                <h2>Analytics</h2>
+                <p>Analize Your Plan</p>
+                <hr>
+                <p>{calender}</p>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+</html>

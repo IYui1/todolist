@@ -1,0 +1,70 @@
+{% include "header.html" %}
+
+<style>
+    .card-3,.card-4{
+        height:auto;
+        width: auto ; 
+        transition: transform 0.3s ease;
+    }
+</style>
+
+    <h3 class="title">To Do List</h3>
+    
+    
+    <div id="card-container">
+        <div class="card-2">
+            <h1>To Do List</h1>
+            <form action="/delete" method="post" class="form-2">
+                {% for item in newListItems %}
+                    <div class="item-row">
+                        <input type="checkbox" name="item_ids" value="{{ item.id }}">
+                        <p>{{ item.name }}</p>
+                    </div>
+                {% else %}
+                    <p>No items added yet!</p>
+                {% endfor %}
+                <button type="submit">Delete Selected</button>
+            </form>
+            
+            
+            <form class="item" action="/todolist" method="post" class= 'form'>
+                <input type="text" name="newItem" placeholder="New Item" required>
+                <button type="submit" name="list">+</button>
+            </form>
+        </div>
+        <div class="card-column"> 
+            <div class="card-3">
+                <h3>Priority</h3>
+                <form action="/delete_priority" method="post" class="form-2">
+                    {% for Priority in priority_items %}
+                    <div class="item-row" id="priority1">
+                            <input type="checkbox" name="priority_ids" value="{{ Priority.id }}" onchange="this.form.submit()">
+                            <p>{{ Priority.name }}</p>
+                        </div>
+                        {%endfor%}
+                </form>
+                <form class="item" action="/todolist" method="post" class='form'>
+                    <input type="text" name="newPriority" placeholder="New Priority Item" required>
+                    <button type="submit" name="list">+</button>
+                </form>
+
+            </div>
+            <div class="card-4">
+                <h3>Urgent</h3>
+                <form action="/delete_urgent" method="post" class="form-2">
+                    {% for Urgent in urgent_items %}
+                    <div class="item-row"id="priority2" >
+                            <input type="checkbox" name="Urgent_ids" value="{{ Urgent.id }}" onchange="this.form.submit()">
+                            <p>{{ Urgent.name }}</p>
+                        </div>
+                        {%endfor%}
+                </form>
+                <form class="item" action="/todolist" method="post" class='form'>
+                    <input type="text" name="newUrgent" placeholder="New Urgent Item" required>
+                    <button type="submit" name="list">+</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

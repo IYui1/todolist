@@ -1,0 +1,264 @@
+body {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    align-items: center;
+}
+
+.wrapper {
+    display: flex; /* Use flexbox to arrange child elements in a row */
+}
+
+nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 15%;
+    background-color: #f1f1f1;
+    height: 100vh; /* Full height of the viewport */
+    position: fixed; /* Make it stick, even on scroll */
+    overflow: auto;
+}
+
+ul {
+    padding: 20px; /* Remove default padding */
+}
+
+li {
+    display: flex; /* Use flex for alignment */
+    align-items: center; /* Center items vertically */
+    margin-bottom: 20px; /* Space between items */
+}
+
+.sec {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.img-icon {
+    width: 20px;
+    height: 20px;
+    padding-right: 10px; /* Space between icon and text */
+}
+
+a {
+    color: black;
+    text-decoration: none; /* Remove underline */
+    display: flex; /* Use flex for alignment in link */
+    align-items: center; /* Center items vertically */
+}
+
+.container-2 {
+    margin-left: 18%; /* Adjust left margin to accommodate the nav */
+    padding: 2rem; /* Add some padding */
+    flex-grow: 1; /* Allow this container to take the remaining space */
+    text-align: center;
+}
+.title{
+    margin-left: 15%;
+    padding: 2rem;
+}
+#card {
+    display: flex;
+    align-items: center;
+    gap: 2rem; /* Add smaller gaps between cards */
+    margin-left: 20%;
+}
+
+.card {
+    box-shadow: 0 4px 10px 0;
+    width: 18%; /* Slightly adjust card width to fit more cards in a row */
+    padding: 16px;
+    border-radius: 16px;
+    margin: 0;
+    transition: transform 0.3s ease;
+}
+.button{
+    width: 25px;
+    height: 25px;
+}
+.card:hover{
+    transform: scale(1.15);
+}
+#card-container {
+    margin-left: 18%;
+    display: flex;               /* Flexbox untuk menampilkan card secara berdampingan */
+    gap: 4rem;
+    width: 80%;                  /* Lebar container untuk mengontrol posisi card */
+}
+.card-2{
+    height:auto;
+    width: 45% ; 
+    transition: transform 0.3s ease;
+}
+.card-column {
+    display: flex;
+    flex-direction: column;       /* Membuat card-3 dan card-4 berada dalam satu kolom */
+    gap: 1rem;                    /* Jarak antar card */                /* Tinggi tetap untuk kolom */
+    width: 33%;                   /* Lebar tetap untuk kolom */
+}
+
+.card-3, .card-4 {
+    height: calc(50% - 0.5rem);   /* Membagi tinggi card-column secara merata, memperhitungkan jarak antar card */
+    width: 100%;                  /* Lebar penuh di dalam kolom */
+}
+.card-2, .card-3, .card-4 {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);                 
+    padding: 16px;
+    border-radius: 16px;
+    transition: transform 0.3s ease;
+    background-color: #f9f9f9;
+}
+
+.card-3 {
+    background-color: #ffe0b2;   /* Warna latar belakang berbeda untuk membedakan card-3 */
+}
+.card-4{
+    background-color: #ebb0b0;
+
+}
+
+.title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+/* Styling for the registration page */
+header.masthead {
+    height: 50vh;
+    min-height: 300px;
+    background-size: cover;
+    background-position: center;
+}
+
+.page-heading {
+    text-align: center;
+    padding: 50px 0;
+    color: white;
+}
+
+main.mb-4 {
+    padding: 20px 0;
+}
+
+.box {
+    background-color: #f9f9f9; /* Warna latar belakang untuk kotak pendaftaran */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px; /* Lebar maksimum kotak */
+    margin: 0 auto; /* Memusatkan kotak di halaman */
+    text-align: center; /* Memusatkan teks di dalam kotak */
+}
+
+h1 {
+    margin-bottom: 20px; /* Jarak di bawah judul */
+    font-size: 24px; /* Ukuran font judul */
+    color: #333; /* Warna teks judul */
+}
+
+.form {
+    display: flex; /* Menggunakan flexbox untuk tata letak form */
+    flex-direction: column; /* Menyusun elemen secara vertikal */
+}
+
+input {
+    margin-bottom: 15px; /* Jarak di bawah setiap input */
+    padding: 12px; /* Padding di dalam input */
+    border-radius: 5px; /* Sudut melengkung untuk input */
+    border: 1px solid #ccc; /* Border abu-abu untuk input */
+    font-size: 16px; /* Ukuran font input */
+    transition: border-color 0.3s; /* Transisi border saat fokus */
+}
+
+input:focus {
+    border-color: #007bff; /* Warna border saat fokus */
+    outline: none; /* Menghilangkan outline default */
+}
+
+button {
+    padding: 12px; /* Padding di dalam tombol */
+    font-size: 18px; /* Ukuran font tombol */
+    background-color: #007bff; /* Warna latar belakang tombol */
+    color: white; /* Warna teks tombol */
+    border: none; /* Menghilangkan border tombol */
+    border-radius: 5px; /* Sudut melengkung untuk tombol */
+    cursor: pointer; /* Menunjukkan kursor pointer saat hover */
+    transition: background-color 0.3s; /* Transisi warna latar belakang saat hover */
+}
+
+button:hover {
+    background-color: #0056b3; /* Warna latar belakang tombol saat hover */
+}
+#priority1{
+    background-color: #ffe0b2
+}
+#priority2{
+    background-color: #ebb0b0
+}
+/* Responsive styling */
+@media (max-width: 576px) {
+    .box {
+        padding: 20px; /* Mengurangi padding untuk tampilan lebih kecil */
+    }
+
+    h1 {
+        font-size: 20px; /* Ukuran font judul lebih kecil di perangkat kecil */
+    }
+
+    input, button {
+        font-size: 14px; /* Ukuran font lebih kecil di perangkat kecil */
+    }
+}
+.form-2 {
+    display: flex;
+    flex-direction: column; /* Mengatur item secara vertikal */
+    margin: 10px 0; /* Margin atas dan bawah untuk form */
+}
+
+.item-row {
+    display: flex; /* Menggunakan flexbox untuk item */
+    align-items: center; /* Memusatkan elemen secara vertikal */
+    background-color: #f9f9f9; /* Warna latar belakang untuk item */
+    transition: background-color 0.3s; /* Transisi warna latar belakang */
+}
+input:checked+p {
+    text-decoration: line-through;
+    text-decoration-color: #A683E3;
+  }
+  
+input[type="checkbox"] {
+    margin: 20px;
+  }
+  
+
+/* Responsive styling */
+@media (max-width: 576px) {
+    .item-row {
+        padding: 8px; /* Padding lebih kecil di perangkat kecil */
+    }
+
+    p {
+        font-size: 14px; /* Ukuran font lebih kecil di perangkat kecil */
+    }
+}
+@media (max-width: 768px) {
+    #card-container {
+        flex-direction: column; /* Stack cards vertically on smaller screens */
+        align-items: center; /* Center cards */
+    }
+
+    .card-2, .card-3, .card-4 {
+        max-width: 100%; /* Full width for cards on smaller screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .item-row {
+        flex-direction: column; /* Stack checkbox and text vertically */
+        align-items: flex-start; /* Align items to start */
+    }
+
+    input[type="text"], button {
+        font-size: 14px; /* Smaller font size on very small screens */
+    }
+}

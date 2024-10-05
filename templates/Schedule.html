@@ -1,0 +1,182 @@
+{% include "header.html" %}
+<style>
+    table {
+        width: 100%;
+        table-layout: auto;          /* Otomatis menyesuaikan lebar kolom sesuai konten */
+        word-wrap: break-word; 
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    .card-2,.card-3,.card-4{
+        height:auto;
+        width: auto ; 
+        transition: transform 0.3s ease;
+    }
+    table, th, td {
+        border: 1px solid black;
+        text-align: center;
+        padding: 5px;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        height: 40px;
+    }
+
+    td {
+        height: auto;
+    }
+
+    td[contenteditable] {
+        background-color: #f9f9f9;
+    }
+
+    /* Remove border on focus */
+    td:focus {
+        outline: none;
+        border: none;
+        background-color: #f9f9f9;
+    }
+
+    button {
+        margin-top: 10px;
+        padding: 8px 15px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+
+<h3 class="title">Schedule</h3>
+
+<!-- Bagian To-Do List -->
+<!-- Bagian To-Do List -->
+<div id="card-container">
+    <div class="card-2">
+        <h1>Schedule</h1>
+        <form action="/schedule" method="post" class="form">
+            <div>
+                <table id="scheduleTable">
+                    <thead>
+                        <tr>
+                            <th>Monday</th>
+                            <th>Tuesday</th>
+                            <th>Wednesday</th>
+                            <th>Thursday</th>
+                            <th>Friday</th>
+                            <th>Saturday</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for schedule in newListSchedule %}
+                        <tr>
+                            <td contenteditable="true">{{ schedule.monday }}</td>
+                            <td contenteditable="true">{{ schedule.tuesday }}</td>
+                            <td contenteditable="true">{{ schedule.wednesday }}</td>
+                            <td contenteditable="true">{{ schedule.thursday }}</td>
+                            <td contenteditable="true">{{ schedule.friday }}</td>
+                            <td contenteditable="true">{{ schedule.saturday }}</td>
+                        </tr>
+                        {% endfor %}
+                        <tr>
+                            <td contenteditable="true"></td>
+                            <td contenteditable="true"></td>
+                            <td contenteditable="true"></td>
+                            <td contenteditable="true"></td>
+                            <td contenteditable="true"></td>
+                            <td contenteditable="true"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            
+                <button type="button" id="addRowBtn">+</button>
+            
+                <form action="/schedule" method="post" class="form" id="scheduleForm">
+                    <input type="hidden" name="scheduleData" id="scheduleData">
+                    <button type="submit" name="newSchedule">Add Schedule</button>
+                </form>
+            
+                <script>
+                    // Function to add a new row
+                    function addRow() {
+                        var tableBody = document.querySelector("#scheduleTable tbody");
+                        var newRow = document.createElement("tr");
+            
+                        for (var i = 0; i < 6; i++) {
+                            var newCell = document.createElement("td");
+                            newCell.contentEditable = "true";  // Make cell editable
+                            newRow.appendChild(newCell);
+                        }
+            
+                        tableBody.appendChild(newRow);
+                    }
+            
+                    // Event listener for adding a new row
+                    document.getElementById("addRowBtn").addEventListener("click", function(event) {
+                        event.preventDefault();
+                        addRow();
+                    });
+            
+                    // Function to gather data from the table and set it to the hidden input
+                    function gatherData() {
+                        var tableData = [];
+                        var rows = document.querySelectorAll("#scheduleTable tbody tr");
+            
+                        rows.forEach(function(row) {
+                            var rowData = [];
+                            row.querySelectorAll("td").forEach(function(cell) {
+                                rowData.push(cell.innerText.trim());
+                            });
+                            tableData.push(rowData);
+                        });
+            
+                        document.getElementById("scheduleData").value = JSON.stringify(tableData);
+                    }
+            
+                    // Event listener for form submission
+                    document.getElementById("scheduleForm").addEventListener("submit", function(event) {
+                        gatherData();
+                    });
+                </script>
+            </div>      
+        </div>
+
+
+    <div class="card-column"> 
+        <div class="card-3">
+            <h3>Priority</h3>
+            <form action="/delete_priority" method="post" class="form-2">
+                {% for SchedulePriority in priority_items %}
+                <div class="item-row" id="priority1">
+                        <input type="checkbox" name="schedule_priority_ids" value="{{ SchedulePriority.id }}" onchange="this.form.submit()">
+                        <p>{{ SchedulePriority.name }}</p>
+                    </div>
+                {%endfor%}
+            </form>
+            <form class="item" action="/schedule" method="post" class="form">
+                <input type="text" name="newPrioritySchedule" placeholder="New Priority Item" required>
+                <button type="submit" name="list">+</button>
+            </form>
+        </div>
+        <div class="card-4">
+            <h3>Urgent</h3>
+            <form action="/delete_urgent" method="post" class="form-2">
+                {% for ScheduleUrgent in urgent_items %}
+                <div class="item-row"id="priority2" >
+                        <input type="checkbox" name="schedule_urgent_ids" value="{{ ScheduleUrgent.id }}" onchange="this.form.submit()">
+                        <p>{{ ScheduleUrgent.name }}</p>
+                    </div>
+                {%endfor%}
+            </form>
+            <form class="item" action="/schedule" method="post" class="form">
+                <input type="text" name="newUrgentSchedule" placeholder="New Urgent Item" required>
+                <button type="submit" name="list">+</button>
+            </form>
+        </div>
+    </div>
+</div>
